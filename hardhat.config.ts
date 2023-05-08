@@ -18,7 +18,7 @@ import {
   buildForkConfig,
 } from './helper-hardhat-config';
 
-require('dotenv').config();
+require('dotenv').config({ path: '.env' });
 
 import '@nomiclabs/hardhat-ethers';
 import '@nomiclabs/hardhat-waffle';
@@ -152,6 +152,12 @@ const buidlerConfig: HardhatUserConfig = {
         count: 20,
       },
     },
+    testnet: { // Tenet testnet
+      url: "https://rpc.testnet.tenet.org",
+      chainId: 155,
+      gas: 10000000,
+      accounts: { mnemonic: process.env.DEPLOYER_MNEMONIC ?? "mnem mnem test test test test test test test test test junk" }
+    }
   },
 };
 
